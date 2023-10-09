@@ -1,10 +1,18 @@
 export default class Slider {
-  constructor({page = "", btnsPrev = "", btnsNext = "", firstPage = ""} = {}) {
-    this.page = document.querySelector(page);
-    this.slides = this.page.children;
+  constructor({
+    container = null, 
+    btnsPrev = null, 
+    btnsNext = null,
+    activeClass = "",
+    animate,
+    autoplay} = {}) {
+    this.container = document.querySelector(container);
+    try {this.slides = this.container.children;} catch(e){}
     this.btnsPrev = document.querySelectorAll(btnsPrev);
     this.btnsNext = document.querySelectorAll(btnsNext);
-    this.firstPage = document.querySelectorAll(firstPage);
+    this.activeClass = activeClass;
+    this.animate = animate;
+    this.autoplay = autoplay;
     this.slideIndex = 1;
   }
 }
